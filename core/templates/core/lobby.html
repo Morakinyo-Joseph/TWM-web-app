@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <h1>Welcome to the Lobby: {{ request.user.username }}</h1>
+
+    <h2>List of Available Players</h2>
+
+    <!-- messages -->
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+
+
+
+    <!-- notification of invites -->
+    {% if notification.receiving_user == request.user %}
+        {% if flag %}
+
+            {{ notification.message }}
+            <br>
+            Do you wish to accept
+
+            <form method="post">
+                {% csrf_token %}
+                <input type="submit", value="Yes", name="yes">
+            </form>
+
+            <a href="{% url 'core:decline-note' %}">
+                <button class="btn btn-danger">No</button>
+            </a>
+        {% endif %}
+    {% endif %}
+
+
+    {% for user in users %}
+
+        {% if request.user.username != user.username %}
+
+
+            <!-- list of users available for pairing -->
+            <p>
+                {{ user.username }}
+
+                <form method="post", action="{% url 'core:handshake' user.id %}">
+                    {% csrf_token %}
+                    
+                    <input type="submit", value="Pair", name="pair">
+                </form>
+    
+            </p>
+        {% endif %}
+
+    {% endfor %}
+
+{% endblock content %}

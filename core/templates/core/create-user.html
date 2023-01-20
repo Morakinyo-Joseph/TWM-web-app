@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<form method="post">
+    {% csrf_token %}
+
+    <input type="text", name="user", class="form-control", placeholder="Create a username">
+    <br>
+    <input type="submit", value="CREATE", class="btn btn-success">
+
+</form>
+
+
+{% endblock content %}
