@@ -1,17 +1,4 @@
-{% extends 'base.html' %}
-
 {% load static %}
-
-
-{% block content %}
-
-
-<!-- <script>
-    function timedRefresh(timeoutPeriod) {
-        setTimeout("location.reload(true);",timeoutPeriod);
-    }
-</script> -->
-
 
 <style>
     .room-heading{
@@ -36,12 +23,12 @@
     }
     .sub-head{
         display: flex;
-        /* border: 1px solid black; */
+        border: 1px solid black;
         justify-content: space-between;
     }
     .room-heading{
         /* border: 1px solid black; */
-        /* margin-top: 5px; */
+        margin-top: 5px;
         margin-bottom: 7px;
     }
     table, td {
@@ -53,10 +40,10 @@
         font-size: 50px;
     }
     .game{
-        margin-top: 1%;
+        margin-top: 4%;
         margin-bottom: 20px;
         display: flex;
-        /* border: 1px solid black; */
+        border: 1px solid black;
         justify-content: center;
     }
     .movement{
@@ -64,15 +51,11 @@
         margin-right: 50px;
     }
     .messages{
-        /* border: 1px solid black; */
+        border: 1px solid black;
         justify-content: center;
         display: flex;
-        /* margin-top: -40px; */
+        margin-top: 5px;
         color: red;
-    }
-    .board{
-        /* border: 1px solid red; */
-        padding-top: 20px;
     }
 </style>
 
@@ -81,6 +64,7 @@
     <h1>Room {{ room.room_id }}</h1>
     <a href="{% url 'core:leave' %}"><button class="btn btn-danger">Leave Game</button></a>
 </div>
+
 
 
 
@@ -111,8 +95,6 @@
 </div>
 
 
-<hr>
-
 <!-- messages -->
 <div class="messages">
     {% for message in messages %}
@@ -121,28 +103,39 @@
 </div>
 
 
+<hr>
+
+
 <div class="game">
 
     <div class="movement">
-        
+
         <form method="post">
             {% csrf_token %}
             
-            {% if request.user == room.player1 %}
+            {% if turn == true %}
 
-                {{ white_piece.as_p }}
-                {{ board_post.as_p }}
+                {% if request.user == room.player1 %}
 
-                <input type="submit", value="Submit", class="btn btn-success", onClick="window.location.reload(true)">
+                    {{ white_piece.as_p }}
+                    {{ board_post.as_p }}
+    
+                    <input type="submit", value="Submit", class="btn btn-success">
+                {% endif %}
+
+
+            {% elif turn == false %}
+
+                {% if request.user == room.player2 %}
+
+                    {{ black_piece.as_p }}
+                    {{ board_post.as_p }}
+
+                    <input type="submit", value="Submit", class="btn btn-success">
+                {% endif %}
+
             {% endif %}
-
-            {% if request.user == room.player2 %}
-
-                {{ black_piece.as_p }}
-                {{ board_post.as_p }}
-
-                <input type="submit", value="Submit", class="btn btn-success", onClick="window.location.reload(true)">
-            {% endif %}
+            
         </form>
 
     </div>
@@ -156,15 +149,15 @@
                 {% for p in board %}
                     {% if p.post == 1 %}
                         <td>
-                            {{ p.post }}: {{ p.piece }}
+                            {{ p.post }}
                         </td>
                     {% elif p.post == 2 %}
                         <td>
-                            {{ p.post }}: {{ p.piece }}
+                            {{ p.post }}
                         </td>
                     {% elif p.post == 3 %}
                         <td>
-                            {{ p.post }}: {{ p.piece }}
+                            {{ p.post }}
                         </td>
                     {% endif %}
                 {% endfor %}
@@ -174,16 +167,16 @@
                 {% for p in board %}
                     {% if p.post == 4 %}
                         <td>
-                            {{ p.post }}: {{ p.piece }}
+                            {{ p.post }}
                         </td>
                     {% endif %}
                     {% if p.post == 5 %}
                         <td>
-                            {{ p.post }}: {{ p.piece }}
+                            {{ p.post }}
                         </td>
                     {% elif p.post == 6 %}
-                        <td>
-                            {{ p.post }}: {{ p.piece }}
+                        <td>{{ p.post }}
+
                         </td>
                     {% endif %}
                 {% endfor %}
@@ -193,16 +186,16 @@
                 {% for p in board %}
                     {% if p.post == 7 %}
                         <td>
-                            {{ p.post }}: {{ p.piece }}
+                            {{ p.post }}
                         </td>
                     {% endif %}
                     {% if p.post == 8 %}
                         <td>
-                            {{ p.post }}: {{ p.piece }}
+                            {{ p.post }}
                         </td>
                     {% elif p.post == 9 %}
                         <td>
-                            {{ p.post }}: {{ p.piece }}
+                            {{ p.post }}
                         </td>
                     {% endif %}
                 {% endfor %}
@@ -213,6 +206,3 @@
     </div>
 
 </div>
-
-
-{% endblock content %}

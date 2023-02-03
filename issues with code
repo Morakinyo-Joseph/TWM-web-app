@@ -1,0 +1,3 @@
+The game's page doesn't auto reload when a piece is moved.
+Doesn't have a function to check wether a player has won or not(capture board does not exists).
+Nothing to switch player's turn.

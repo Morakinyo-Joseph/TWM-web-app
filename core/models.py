@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
+
 class User(AbstractUser, models.Model):
     date_created = models.DateTimeField(auto_now=True)
 
@@ -11,6 +12,7 @@ class Room(models.Model):
     room_id = models.CharField(max_length=5)
     player1 = models.ForeignKey(User, on_delete=models.CASCADE, related_name="player1")
     player2 = models.ForeignKey(User, on_delete=models.CASCADE, related_name="player2")
+    available = models.BooleanField(default=True)
 
 
 class Notification(models.Model):

@@ -15,4 +15,6 @@ urlpatterns = [
     path("room/<str:pk>", views.room, name="room"),
 
     path("decline", views.decline_notification, name="decline-note"),
+
+    path('leave', views.leave, name="leave"),
 ]
