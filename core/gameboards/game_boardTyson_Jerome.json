@@ -2,48 +2,48 @@
   "board": [
     {
       "post": 1,
-      "piece": null,
-      "filled": false
-    },
-    {
-      "post": 2,
-      "piece": "b2",
-      "filled": true
-    },
-    {
-      "post": 3,
       "piece": "w2",
       "filled": true
     },
     {
-      "post": 4,
-      "piece": "b3",
-      "filled": true
+      "post": 2,
+      "piece": null,
+      "filled": false
     },
     {
-      "post": 5,
-      "piece": "w3",
-      "filled": true
-    },
-    {
-      "post": 6,
+      "post": 3,
       "piece": "b1",
       "filled": true
     },
     {
-      "post": 7,
+      "post": 4,
+      "piece": "w1",
+      "filled": true
+    },
+    {
+      "post": 5,
+      "piece": "b3",
+      "filled": true
+    },
+    {
+      "post": 6,
       "piece": null,
       "filled": false
+    },
+    {
+      "post": 7,
+      "piece": "w3",
+      "filled": true
     },
     {
       "post": 8,
-      "piece": null,
-      "filled": false
+      "piece": "b2",
+      "filled": true
     },
     {
       "post": 9,
-      "piece": "w1",
-      "filled": true
+      "piece": null,
+      "filled": false
     }
   ]
 }

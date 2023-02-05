@@ -1,0 +1,63 @@
+
+
+
+<table align="center">
+    <tr>
+        {% for p in board %}
+            {% if p.post == 1 %}
+                <td>
+                    {{ p.post }}: {{ p.piece }}
+                </td>
+            {% elif p.post == 2 %}
+                <td>
+                    {{ p.post }}: {{ p.piece }}
+                </td>
+            {% elif p.post == 3 %}
+                <td>
+                    {{ p.post }}: {{ p.piece }}
+                </td>
+            {% endif %}
+        {% endfor %}
+    </tr>
+
+    <tr>
+        {% for p in board %}
+            {% if p.post == 4 %}
+                <td>
+                    {{ p.post }}: {{ p.piece }}
+                </td>
+            {% endif %}
+            {% if p.post == 5 %}
+                <td>
+                    {{ p.post }}: {{ p.piece }}
+                </td>
+            {% elif p.post == 6 %}
+                <td>
+                    {{ p.post }}: {{ p.piece }}
+                </td>
+            {% endif %}
+        {% endfor %}
+    </tr>
+
+    <tr>
+        {% for p in board %}
+            {% if p.post == 7 %}
+                <td>
+                    {{ p.post }}: {{ p.piece }}
+                </td>
+            {% endif %}
+            {% if p.post == 8 %}
+                <td>
+                    {{ p.post }}: {{ p.piece }}
+                </td>
+            {% elif p.post == 9 %}
+                <td>
+                    {{ p.post }}: {{ p.piece }}
+                </td>
+            {% endif %}
+        {% endfor %}
+    </tr>
+</table>
+
+
+</div>

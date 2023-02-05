@@ -20,35 +20,8 @@
 
 
 <!-- messages -->
-{% for message in messages %}
-    <hr>    
-    {{ message }}
-{% endfor %}
+{% include 'core/messages.html' %}
 
-
-
-<!-- notification of invites -->
-{% if notification.receiving_user == request.user %}
-    {% if flag %}
-        <hr>
-        <h2>{{ notification.message }}</h2>
-        Do you wish to accept
-
-        <div class="choice-btns">
-
-            <form method="post">
-                {% csrf_token %}
-                <input type="submit", value="Yes", name="yes", class="btn btn-success">
-            </form>
-            
-            <a href="{% url 'core:decline-note' %}">
-                <button class="btn btn-danger">No</button>
-            </a>
-
-        </div>
-
-    {% endif %}
-{% endif %}
 
 
 <br><hr>

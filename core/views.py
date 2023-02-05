@@ -341,7 +341,7 @@ def room(request, pk):
                     "filled": data["board"][counter]["filled"]
                 }
                 board_list.append(board)
-            counter += 1
+                counter += 1
 
     tracker = {
         "board": board_list,
